@@ -3,6 +3,8 @@
 <body>
 
 <?php
+define("MAXSTOCK", 20);
+
 $cars = array
   (
   array("Volvo",22,18),
@@ -12,7 +14,7 @@ $cars = array
   );
     
 for ($row = 0; $row < count($cars); $row++) {
-  if ($cars[$row][1] < 20) {
+  if ($cars[$row][1] < MAXSTOCK) {
     echo "<p><b>Row number $row</b></p>";
     echo "<ul>";
     for ($col = 0; $col < count($cars[$row]); $col++) {
