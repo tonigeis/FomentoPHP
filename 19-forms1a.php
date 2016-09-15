@@ -19,7 +19,6 @@
 
 $nombre = $apellido = $sexo = "";
 $nombreErr = $apellidoErr = $sexoErr = "";
-$mensajeok = $mensajerespuesta = "";
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
