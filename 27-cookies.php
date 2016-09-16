@@ -2,10 +2,18 @@
 <?php
 $cookie_name = "user";
 $cookie_value = "John Doe";
-$cookieCounter = "";
+$cookieCounter = "contador";
 
 setcookie($cookie_name, $cookie_value, time() + (86400 * 30), "/"); // 86400 = 1 day
 //setcookie($cookieCounter, $_COOKIE[$cookieCounter] + 1, time() + (86400 * 30), "/");
+
+if (!isset($_COOKIE[$cookieCounter])) {
+	setcookie($cookieCounter, 1, time() + (86400 * 30), "/");
+	echo "Se ha creado la cookie contador con valor 1";
+} else {
+	setcookie($cookieCounter, $_COOKIE[$cookieCounter] + 1, time() + (86400 * 30), "/");
+	echo "Has visitado la página " . $_COOKIE[$cookieCounter] . " veces" . "<br>";
+}
 ?>
 <html>
 <body>
@@ -16,14 +24,6 @@ if(!isset($_COOKIE[$cookie_name])) {
 } else {
      echo "Cookie '" . $cookie_name . "' is set!<br>";
      echo "Value is: " . $_COOKIE[$cookie_name] . "<br>";
-}
-
-if (!isset($_COOKIE[$cookieCounter])) {
-	setcookie($cookieCounter, 1, time() + (86400 * 30), "/");
-	echo "Se ha creado la cookie contador con valor 1";
-} else {
-	setcookie($cookieCounter, $_COOKIE[$cookieCounter] + 1, time() + (86400 * 30), "/");
-	echo "Has visitado la página " . $_COOKIE[$cookieCounter] . " veces";
 }
 ?>
 
