@@ -4,6 +4,8 @@
 </head>
 <body>
 <?php
+require 'Celda.php';
+
 class Tabla {
   private $mat=array();
   private $cantFilas;
@@ -23,9 +25,9 @@ class Tabla {
     $this->cantColumnas=$co;
   }
 
-  public function cargar($fila,$columna,$valor)
+  public function cargar($fila,$columna,$valor,$colorFuente,$colorFondo)
   {
-    $this->mat[$fila][$columna]=$valor;
+    $this->mat[$fila][$columna]=new Celda($valor,$colorFuente,$colorFondo);
   }
 
   public function inicioTabla()
@@ -40,7 +42,7 @@ class Tabla {
 
   public function mostrar($fi,$co)
   {
-    echo '<td>'.$this->mat[$fi][$co].'</td>';
+    echo $this->mat[$fi][$co]->graficar();
   }
 
   public function finFila()
@@ -69,16 +71,18 @@ class Tabla {
   }
 }
 
-$filas = 15;
-$columnas = 10;
+$filas = 25;
+$columnas = 20;
 $cont = 1;
 $incremento = 3;
+$color = 'black';
+$bgColorsList = array('cyan', 'red', 'blue', 'orange', 'brown', 'pink');
 
 $tabla1=new Tabla($filas,$columnas);
 
 for ($f=1; $f <= $filas; $f++) { 
   for ($c=1; $c <= $columnas; $c++) { 
-    $tabla1->cargar($f,$c,$cont);
+    $tabla1->cargar($f, $c, $cont, $color, $bgColorsList[rand(0, count($bgColorsList) - 1)]);
     $cont += $incremento;
   }
 }
