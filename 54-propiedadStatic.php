@@ -44,18 +44,18 @@ $vec[]=new Gerente('marcos',8000);
 $suma1=0;
 $suma2=0;
 
-$contadorEmpleados = 0;
-$contadorGerentes = 0;
+/*$contadorEmpleados = 0;
+$contadorGerentes = 0;*/
 
 for($f=0;$f<count($vec);$f++)
 {
   if ($vec[$f] instanceof Empleado){
     $suma1=$suma1+$vec[$f]->retornarSueldo();
-    $contadorEmpleados++;
+    //$contadorEmpleados++;
   }
   else if ($vec[$f] instanceof Gerente){
     $suma2=$suma2+$vec[$f]->retornarSueldo();
-    $contadorGerentes++;
+    //$contadorGerentes++;
   }     
 }
 
