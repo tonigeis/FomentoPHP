@@ -20,7 +20,7 @@ abstract class Trabajador {
 } 
 
 class Empleado extends Trabajador {
-  public static $numEmpleados;
+  static $numEmpleados;
   public function __construct($nom,$sue){
     parent::__construct($nom,$sue);
     self::$numEmpleados++;
@@ -28,7 +28,7 @@ class Empleado extends Trabajador {
 }
 
 class Gerente extends Trabajador {
-  public static $numGerentes;
+  static $numGerentes;
   public function __construct($nom,$sue){
     parent::__construct($nom,$sue);
     self::$numGerentes++;
@@ -44,18 +44,13 @@ $vec[]=new Gerente('marcos',8000);
 $suma1=0;
 $suma2=0;
 
-/*$contadorEmpleados = 0;
-$contadorGerentes = 0;*/
-
 for($f=0;$f<count($vec);$f++)
 {
   if ($vec[$f] instanceof Empleado){
     $suma1=$suma1+$vec[$f]->retornarSueldo();
-    //$contadorEmpleados++;
   }
   else if ($vec[$f] instanceof Gerente){
     $suma2=$suma2+$vec[$f]->retornarSueldo();
-    //$contadorGerentes++;
   }     
 }
 
