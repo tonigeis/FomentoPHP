@@ -27,40 +27,60 @@ class Usuario extends DBAbstractModel {
 	public function set($user_data=array()) {
 		if(array_key_exists('email', $user_data)):
 			$this->get($user_data['email']);
-		if($user_data['email'] != $this->email):
-			foreach ($user_data as $campo=>$valor):
-				$$campo = $valor;
-			endforeach;
-			$this->query = "
-			INSERT INTO usuarios
-			(nombre, apellido, email, clave)
-			VALUES
-			('$nombre', '$apellido', '$email', '$clave')
-			";
-			$this->execute_single_query();
-		endif;
+			if($user_data['email'] != $this->email):
+				foreach ($user_data as $campo=>$valor):
+					$$campo = $valor;
+				endforeach;
+				$this->query = "
+				INSERT INTO usuarios
+				(nombre, apellido, email, clave)
+				VALUES
+				('$nombre', '$apellido', '$email', '$clave')
+				";
+				$this->execute_single_query();
+			endif;
 		endif;
 	}
 	public function edit($user_data=array()) {
-		foreach ($user_data as $campo=>$valor):
-			$$campo = $valor;
-		endforeach;
+		if(array_key_exists('email', $user_data)):
+			$this->get($user_data['email']);
+			if($user_data['email'] == $this->email):
+				foreach ($user_data as $campo=>$valor):
+					$$campo = $valor;
+				endforeach;
 
-		$this->query = "
-			UPDATE usuarios
-			SET nombre='$nombre',
-			apellido='$apellido',
-			clave='$clave'
-			WHERE email = '$email'
-		";
-		$this->execute_single_query();
+				$this->query = "
+					UPDATE usuarios
+					SET nombre='$nombre',
+					apellido='$apellido',
+					clave='$clave'
+					WHERE email = '$email'
+				";
+				$this->execute_single_query();
+			else:
+				echo "No existe este usuario para actualizar";
+			endif;
+		else:
+			echo "Has de informar el campo Email";
+		endif;
 	}
 	public function delete($user_email='') {
-		$this->query = "
-			DELETE FROM usuarios
-			WHERE email = '$user_email'
-		";
-		$this->execute_single_query();
+		if(!empty($user_email)):
+			echo $this->email;
+			$this->get($user_email);
+			echo $this->email;
+			if($user_email == $this->email):
+				$this->query = "
+					DELETE FROM usuarios
+					WHERE email = '$user_email'
+				";
+				$this->execute_single_query();
+			else:
+				echo "No existe el usuario con este email para eliminar";
+			endif;
+		else:
+			echo "El email debe estar informado";
+		endif;
 	}
 	function __destruct() {
 		unset($this);
