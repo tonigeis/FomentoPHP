@@ -1,14 +1,12 @@
 <?php
+require_once('../ABM_USUARIOS/usuarios_model.php');
 
-$diccionario = array(
-	'Título de la Página'=>'POO y MVC en PHP',
-	'keywords'=>'poo, mvc, php, arquitectura de software',
-	'description'=>'El paradigma de la programación orientada a objetos con el
-	patrón arquitectónico MVC en PHP'
-);
+$email = $_GET['email'];
+$usuario = new Usuario();
+$usuario->get($email);
 
 $template = file_get_contents('plantilla.tpl');
-
+$diccionario = $usuario->getRows()[0];
 foreach ($diccionario as $clave=>$valor) {
 	$template = str_replace('{'.$clave.'}', $valor, $template);
 }

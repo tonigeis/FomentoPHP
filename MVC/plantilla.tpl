@@ -4,19 +4,19 @@
 <head>
 	<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 	<title>{Título de la Página}</title>
-	<meta name="title" content="{Título de la Página}">
-	<meta name="keywords" content="{keywords}">
-	<meta name="description" content="{descripción}">
-	<link type="text/css" rel="stylesheet" href="css/template.css">
+	<meta name="title" content="">
+	<meta name="keywords" content="">
+	<meta name="description" content="">
 </head>
 <body>
 	<div id="page">
 		<div id="cab">
-			<img alt="home page" src="img/logo.gif"></a>
+			{id}
 		</div>
 		<div id="contenido">
-			<h1>{Título de la Página}</h1>
+			<h1>{nombre} - {apellido}</h1>
 		</div>
+		<p>{clave} - {email}</p>
 	</div>
 </body>
 </html>
