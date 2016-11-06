@@ -143,7 +143,7 @@
 				    <td><?= $row["fechaNacimiento"] ?></td>
 				    <td><?= $row["lugarNacimiento"] ?></td>
 				    <td><a class="w3-btn w3-pale-red w3-border" onclick="return confirmDel(<?= $row['id'] ?>);" href="crud.php?rowid=<?= $row['id'] ?>">Eliminar</a></td>
-				    <td><button class="w3-blue" id="modificar" onclick='montarRegistro(<?= $row['id']; ?>, "<?= $row['nombre'] ?>", "<?= $row['apellidos'] ?>", "<?= $row['fechaNacimiento'] ?>", "<?= $row['lugarNacimiento'] ?>")'>Modificar</button></td>
+				    <td><a class="w3-btn w3-blue w3-border" id="modificar" onclick='montarRegistro(<?= $row['id']; ?>, "<?= $row['nombre'] ?>", "<?= $row['apellidos'] ?>", "<?= $row['fechaNacimiento'] ?>", "<?= $row['lugarNacimiento'] ?>")'>Modificar</a></td>
 				</tr> 
 	    		<?php endwhile ?>
 	    	</table>
